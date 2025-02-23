@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            display:flex;
+            justify-content: center;
+        }
+        #bg{
+            border: 2px black solid;
+            width: 60vw;
+            height: 80vh;
+            background-color:teal;
+        }
+
+        #fugl{
+            position: absolute;
+            width: 5vw;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg"></canvas>
+
+    <img src="bilder/fugl.png" id="fugl">
+    
+    <script>
+
+
+
+
+
+
+
+
+
+
+        
+        const bg = document.getElementById("bg")
+        const fugl = document.getElementById("fugl")
+
+        let fugl_x = bg.offsetHeight/2
+        let fall = 1.5
+        fugl.style.top = fugl_x + "px"
+
+        function run(){
+
+            if(fugl_x+fugl.offsetHeight < bg.offsetHeight){
+                fugl_x += fall
+                fugl.style.top = fugl_x + "px"
+                console.log("wd")
+
+            }
+            
+            
+        }
+
+        document.addEventListener('keyup', function(event){
+                if(event.key == " " && fugl_x > 0 + fugl.offsetHeight){
+                    console.log("hei")
+                    fall = -fall*2
+                    setTimeout(function(){
+                        fall = -fall/2
+                        console.log("wait")
+
+                    },100); 
+                }
+
+        })
+
+        
+
+        setInterval(run, 1)
+
+    </script>
+</body>
+
+</html>
